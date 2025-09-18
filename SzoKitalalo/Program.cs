@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,9 +18,79 @@ namespace SzoKitalalo
             string[] words = { "első", "alma", "kukac", "vizibicikli" };
             byte remainingLives = 10;
             string guessedLetter = "";
+            byte selector = 0;
+            bool selected = false;
 
             Random random = new Random();
             string wordToGuess = words[random.Next(words.Length)];
+
+
+            do
+            {
+                Console.Clear();
+                Console.Write(selector);
+                Console.WriteLine("Kérem válasszon nehézséget: ");
+
+                if (selector == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                Console.WriteLine("Baba");
+                if (selector == 1)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                Console.WriteLine("Normál");
+                if (selector == 2)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                Console.WriteLine("Szakértő");
+
+                switch (Console.ReadKey().Key)
+                {
+                    case ConsoleKey.Enter:
+                        selected = true;
+                        break;
+                    case ConsoleKey.UpArrow:
+                        if (selector > 0)
+                        {
+                            selector -= 1;
+                        }
+                        break;
+                    case ConsoleKey.DownArrow:
+                        if (selector > 0)
+                        {
+                            selector -= 1;
+                        }
+                        break;
+                }
+
+                switch (selector)
+                {
+                    case 0:
+                        remainingLives = 10;
+                        break;
+                    case 1:
+                        remainingLives = 5;
+                        break;
+                    case 2:
+                        remainingLives = 3;
+                        break;
+                }
+            } while (!selected);
 
             #region Game-Loop
             do
@@ -73,7 +144,7 @@ namespace SzoKitalalo
             Console.Clear();
             Console.WriteLine(wordState);
             return wordState;
-            }
+        }
         }
     }
 }
