@@ -8,6 +8,7 @@ namespace SzoKitalalo
 {
     internal class Program
     {
+        static string wordState = "";
         static void Main(string[] args)
         {
             Console.Title = "Szókitaláló";
@@ -16,26 +17,13 @@ namespace SzoKitalalo
             string[] words = { "első", "alma", "kukac", "vizibicikli" };
             byte remainingLives = 10;
             string guessedLetter = "";
-            string wordState = "";
 
             Random random = new Random();
             string wordToGuess = words[random.Next(words.Length)];
 
             do
             {
-                wordState = "";
-                foreach (char letter in wordToGuess)
-                {
-                    if (guessedLetters.Contains(Convert.ToString(letter)))
-                    {
-                        wordState += letter;
-                    } 
-                    else
-                    {
-                        wordState += '_';
-                    }        
-                }
-                Console.WriteLine(wordState);
+                wordState = showCurrentProgress();
 
                 if (!wordState.Contains("_"))
                 {
@@ -57,14 +45,32 @@ namespace SzoKitalalo
                     if (!wordToGuess.Contains(guessedLetter))
                     {
                         remainingLives -= 1;
+
+                        if (remainingLives == 0)
+                        {
+                            Console.WriteLine("Kifogytál az életekből, vége a játéknak!");
+                        }
                     }
                 }
-
             } while (remainingLives > 0);
 
-            if (remainingLives == 0)
+        string showCurrentProgress()
             {
-                Console.WriteLine("Kifogytál az életekből, vége a játéknak!");
+                string wordState = "";
+                foreach (char letter in wordToGuess)
+                {
+                    if (guessedLetters.Contains(Convert.ToString(letter)))
+                    {
+                        wordState += letter;
+                    }
+                    else
+                    {
+                        wordState += '_';
+                    }
+                }
+                Console.Clear();
+                Console.WriteLine(wordState);
+                return wordState;
             }
         }
     }
