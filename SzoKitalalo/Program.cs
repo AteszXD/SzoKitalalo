@@ -42,7 +42,7 @@ namespace SzoKitalalo
                 else
                 {
                     guessedLetters.Add(guessedLetter.ToLower());
-                    if (!wordToGuess.Contains(guessedLetter))
+                    if (!wordToGuess.Contains(guessedLetter.ToLower()))
                     {
                         remainingLives -= 1;
 
