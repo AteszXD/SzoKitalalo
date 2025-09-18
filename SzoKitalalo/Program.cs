@@ -56,7 +56,7 @@ namespace SzoKitalalo
             } while (remainingLives > 0);
             #endregion
 
-            string showCurrentProgress()
+        string showCurrentProgress()
             {
                 string wordState = "";
                 foreach (char letter in wordToGuess)
