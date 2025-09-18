@@ -10,6 +10,9 @@ namespace SzoKitalalo
     {
         static void Main(string[] args)
         {
+            string[] words = { "első", "alma", "kukac", "vizibicikli" };
+            Random random = new Random();
+            Console.WriteLine(words[random.Next(words.Length)]);
         }
     }
 }
