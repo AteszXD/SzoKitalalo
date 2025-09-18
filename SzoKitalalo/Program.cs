@@ -21,6 +21,7 @@ namespace SzoKitalalo
             Random random = new Random();
             string wordToGuess = words[random.Next(words.Length)];
 
+            #region Game-Loop
             do
             {
                 wordState = showCurrentProgress();
@@ -53,8 +54,9 @@ namespace SzoKitalalo
                     }
                 }
             } while (remainingLives > 0);
+            #endregion
 
-        string showCurrentProgress()
+            string showCurrentProgress()
             {
                 string wordState = "";
                 foreach (char letter in wordToGuess)
