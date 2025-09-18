@@ -57,22 +57,22 @@ namespace SzoKitalalo
             #endregion
 
         string showCurrentProgress()
+        {
+            string wordState = "";
+            foreach (char letter in wordToGuess)
             {
-                string wordState = "";
-                foreach (char letter in wordToGuess)
+                if (guessedLetters.Contains(Convert.ToString(letter)))
                 {
-                    if (guessedLetters.Contains(Convert.ToString(letter)))
-                    {
-                        wordState += letter;
-                    }
-                    else
-                    {
-                        wordState += '_';
-                    }
+                    wordState += letter;
                 }
-                Console.Clear();
-                Console.WriteLine(wordState);
-                return wordState;
+                else
+                {
+                    wordState += '_';
+                }
+            }
+            Console.Clear();
+            Console.WriteLine(wordState);
+            return wordState;
             }
         }
     }
