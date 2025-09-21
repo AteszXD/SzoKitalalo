@@ -28,7 +28,7 @@ namespace SzoKitalalo
             do
             {
                 Console.Clear();
-                Console.Write(selector);
+                Console.ResetColor();
                 Console.WriteLine("Kérem válasszon nehézséget: ");
 
                 if (selector == 0)
@@ -40,6 +40,7 @@ namespace SzoKitalalo
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 Console.WriteLine("Baba");
+
                 if (selector == 1)
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
@@ -49,6 +50,7 @@ namespace SzoKitalalo
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 Console.WriteLine("Normál");
+
                 if (selector == 2)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -71,9 +73,9 @@ namespace SzoKitalalo
                         }
                         break;
                     case ConsoleKey.DownArrow:
-                        if (selector > 0)
+                        if (selector < 2)
                         {
-                            selector -= 1;
+                            selector += 1;
                         }
                         break;
                 }
@@ -93,6 +95,7 @@ namespace SzoKitalalo
             } while (!selected);
 
             #region Game-Loop
+            Console.ResetColor(); // Enélkül a "Szakértő" mód piros lenne, nem tudom miért
             do
             {
                 wordState = showCurrentProgress();
