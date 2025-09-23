@@ -99,7 +99,7 @@ namespace SzoKitalalo
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                 }
-                Console.WriteLine("Baba");
+                Console.WriteLine("Baba (10 élet)");
 
                 if (selector == 1)
                 {
@@ -109,7 +109,7 @@ namespace SzoKitalalo
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                 }
-                Console.WriteLine("Normál");
+                Console.WriteLine("Normál (5 élet)");
 
                 if (selector == 2)
                 {
@@ -119,7 +119,7 @@ namespace SzoKitalalo
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                 }
-                Console.WriteLine("Szakértő");
+                Console.WriteLine("Szakértő (3 élet)");
 
                 switch (Console.ReadKey().Key)
                 {
